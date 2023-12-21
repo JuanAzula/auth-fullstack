@@ -1,0 +1,1 @@
+DELETE http://localhost:3002/api/productos/19

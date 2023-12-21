@@ -1,0 +1,65 @@
+import { URL_BASE } from '../constantes/globales';
+
+const URL_PRODUCTOS = URL_BASE + 'productos/';
+
+
+export default class ProductoService {
+
+    static async getProductos() {
+        const respuesta = await fetch(URL_PRODUCTOS); //fetch para recibir los productos
+        const productos = await respuesta.json();   //nueva variable para almacenar los productos en formato json
+        return productos;
+    }
+
+
+    static async getProducto(id) {
+        const respuesta = await fetch(URL_PRODUCTOS + id); //fetch para mostrar los productos por id
+        const producto = await respuesta.json(); //pasar los productos a formato json
+        return producto;
+    }
+
+
+    static async postProducto(producto) {
+        delete producto.id;
+        const respuesta = await fetch(URL_PRODUCTOS, { //URL_PRODUCTOS escpecifica el servidor
+            method: 'POST', //llama al método
+            headers: {  //establece desde el encabezado el formato JSON
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(producto) //envia el producto al servidor indicado con el formato indicado
+        });
+        const nuevoProducto = await respuesta.json();
+        return nuevoProducto;
+    }
+
+
+    static async putProducto(producto) {
+        const respuesta = await fetch(URL_PRODUCTOS + producto.id, { //indica el servidor y el producto al que acceder
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json' //indica el formato
+            },
+            body: JSON.stringify(producto)  //envia el producto actualizado al servidor indicado sustituyendo el producto indicado con el formato indicado
+        });
+        const nuevoProducto = await respuesta.json();
+        return nuevoProducto;
+    }
+
+
+    static async patchProducto(producto) {
+        const respuesta = await fetch(URL_PRODUCTOS + producto.id, { // indica el servidor y el producto al que acceder
+            method: 'PATCH',   //indica el método al que llamar
+            headers: {
+                'Content-Type': 'application/json'  //indica el formato
+            },
+            body: JSON.stringify(producto)      //comparte el reemplazo del producto indicado
+        });
+        const nuevoProducto = await respuesta.json();
+        return nuevoProducto;
+    }
+
+
+    static async deleteProducto(id) {
+        return await fetch(URL_PRODUCTOS + id, { method: 'DELETE' }); //indica el producto y el servido y llama al método
+    }
+}

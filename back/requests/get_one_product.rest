@@ -1,0 +1,1 @@
+GET http://localhost:3002/api/producto/65339a0aa11ef9a160b0b1dc	

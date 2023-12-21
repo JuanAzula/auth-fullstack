@@ -1,0 +1,9 @@
+POST http://localhost:3002/api/producto
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MzUwYjBiYTUxZjQxN2ExNDU0Y2VkNSIsInVzZXJuYW1lIjoianVhbmF6dWxhdXNlcjMiLCJpYXQiOjE2OTc5ODIzNjgsImV4cCI6MTY5ODU4NzE2OH0.hIHM2cnjfvMvPvx7ub8skeA0mZPAsW9_jflW2gXA5YU
+
+{
+    "nombre" : "Coche",
+    "precio" : 1162.99,
+    "descripcion" : "Bicicleta de montaña"
+}
