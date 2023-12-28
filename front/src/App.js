@@ -9,6 +9,7 @@ import { REDES } from './constantes/redes'
 import { useEffect, useState } from 'react'
 import { ProductoService, TokenService } from './servicios/ProductoService'
 import LoginForm from './componentes/LoginForm.js'
+import ProductForm from './componentes/ProductForm.js'
 
 export default function App () {
   const [productos, setProductos] = useState([])
@@ -80,22 +81,6 @@ export default function App () {
     }
   }
 
-  const renderCreateProductForm = () => {
-    return (
-      <main className="container">
-        <div>
-          <button onClick={handleLogout}>
-            Cerrar sesión
-          </button>
-        </div>
-
-          <Admin productos={productos} setProductos={setProductos} />
-
-        </main>
-
-    )
-  }
-
   return (
     <>
       <Menu menus={MENUS} />
@@ -103,7 +88,11 @@ export default function App () {
 
       {
         user
-          ? renderCreateProductForm()
+          ? <ProductForm
+              handleLogout={handleLogout}
+              productos={productos}
+              setProductos={setProductos}
+              />
           : <LoginForm
               username={username}
               password={password}

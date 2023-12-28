@@ -27,9 +27,3 @@ export default function LoginForm ({ handleSubmit, username, password, handleUse
 
   )
 }
-
-LoginForm.propTypes = {
-  handleSubmit: PropTypes.func.isRequired,
-  username: PropTypes.string
-
-}
