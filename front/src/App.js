@@ -1,4 +1,3 @@
-import Admin from './componentes/admin/Admin'
 import Menu from './componentes/Menu'
 import Pie from './componentes/Pie'
 import Notification from './componentes/Notification.js'
@@ -10,12 +9,11 @@ import { useEffect, useState } from 'react'
 import { ProductoService, TokenService } from './servicios/ProductoService'
 import LoginForm from './componentes/LoginForm.js'
 import ProductForm from './componentes/ProductForm.js'
+import Togglable from './componentes/Togglable.js'
 
 export default function App () {
   const [productos, setProductos] = useState([])
-
   const [errorMessage, setErrorMessage] = useState(null)
-
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [user, setUser] = useState(null)
@@ -52,19 +50,19 @@ export default function App () {
         username,
         password
       })
-      console.log('después del try', user)
+      // console.log('después del try', user)
 
-      console.log('USER', user)
-      console.log('USER TOKEN', user.token)
-      console.log('Username', user.username)
-      console.log('Password antes de setToken', user.password)
+      // console.log('USER', user)
+      // console.log('USER TOKEN', user.token)
+      // console.log('Username', user.username)
+      // console.log('Password antes de setToken', user.password)
 
       window.localStorage.setItem(
         'LoggedProductAppUser', JSON.stringify(user)
       )
 
       TokenService.setToken(user.token)
-      console.log('USER TOKEN después de setToken', user.token)
+      // console.log('USER TOKEN después de setToken', user.token)
 
       setUser(user)
       setUsername('')
@@ -84,8 +82,9 @@ export default function App () {
   return (
     <>
       <Menu menus={MENUS} />
+      <Togglable>
       <Notification message={errorMessage} />
-
+      </Togglable>
       {
         user
           ? <ProductForm
