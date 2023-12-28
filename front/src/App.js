@@ -50,19 +50,12 @@ export default function App () {
         username,
         password
       })
-      // console.log('después del try', user)
-
-      // console.log('USER', user)
-      // console.log('USER TOKEN', user.token)
-      // console.log('Username', user.username)
-      // console.log('Password antes de setToken', user.password)
 
       window.localStorage.setItem(
         'LoggedProductAppUser', JSON.stringify(user)
       )
 
       TokenService.setToken(user.token)
-      // console.log('USER TOKEN después de setToken', user.token)
 
       setUser(user)
       setUsername('')
