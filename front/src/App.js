@@ -8,6 +8,7 @@ import { MENUS } from './constantes/menus'
 import { REDES } from './constantes/redes'
 import { useEffect, useState } from 'react'
 import { ProductoService, TokenService } from './servicios/ProductoService'
+import LoginForm from './componentes/LoginForm.js'
 
 export default function App () {
   const [productos, setProductos] = useState([])
@@ -79,32 +80,6 @@ export default function App () {
     }
   }
 
-  const renderLoginForm = () => {
-    return (
-      <form onSubmit={handleLogin} className='login-form'>
-        <input className='input'
-          type='text'
-          value={username}
-          name='Username'
-          placeholder='Username'
-          onChange={({ target }) => setUsername(target.value)}
-        /><br />
-        <input className='input'
-          type='text'
-          value={password}
-          password={password}
-          name='Password'
-          placeholder='password'
-          onChange={({ target }) => setPassword(target.value)}
-        /><br />
-        <button>
-          Login
-        </button>
-      </form>
-
-    )
-  }
-
   const renderCreateProductForm = () => {
     return (
       <main className="container">
@@ -129,37 +104,14 @@ export default function App () {
       {
         user
           ? renderCreateProductForm()
-          : renderLoginForm()
+          : <LoginForm
+              username={username}
+              password={password}
+              handleSubmit={handleLogin}
+              handleUsernameChange={({ target }) => setUsername(target.value)}
+              handlePasswordChange={({ target }) => setPassword(target.value)}
+          />
       }
-
-      {/* { user === null && renderLoginForm()} */}
-      {/* <form onSubmit={handleLogin}>
-        <input
-          type='text'
-          value={username}
-          name='Username'
-          placeholder='Username'
-          onChange={({ target }) => setUsername(target.value)}
-        /><br />
-        <input
-          type='text'
-          value={password}
-          password={password}
-          name='Password'
-          placeholder='password'
-          onChange={({ target }) => setPassword(target.value)}
-        /><br />
-        <button>
-          Login
-        </button>
-      </form> */}
-
-      {/* { user !== null && renderCreateProductForm()} */}
-      {/* <main className="container"> */}
-        {/* <Fichas productos={PRODUCTOS} /> */}
-        {/* <Admin productos={productos} setProductos={setProductos} /> */}
-      {/* </main> */}
-      {/* <Anuncios anuncios={ANUNCIOS} /> */}
       <Pie redes={ REDES } />
     </>
   )

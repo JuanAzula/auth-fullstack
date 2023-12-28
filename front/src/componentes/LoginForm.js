@@ -2,15 +2,15 @@
 // import Togglable from './Togglable.js'
 import PropTypes from 'prop-types'
 
-export default function LoginForm ({ handleSubmit, ...props }) {
+export default function LoginForm ({ handleSubmit, username, password, handleUsernameChange, handlePasswordChange, ...props }) {
   return (
-        <form onSubmit={handleLogin} className='login-form'>
+        <form onSubmit={handleSubmit} className='login-form'>
           <input className='input'
             type='text'
             value={username}
             name='Username'
             placeholder='Username'
-            onChange={({ target }) => setUsername(target.value)}
+            onChange={handleUsernameChange}
           /><br />
           <input className='input'
             type='text'
@@ -18,7 +18,7 @@ export default function LoginForm ({ handleSubmit, ...props }) {
             password={password}
             name='Password'
             placeholder='password'
-            onChange={({ target }) => setPassword(target.value)}
+            onChange={handlePasswordChange}
           /><br />
           <button>
             Login

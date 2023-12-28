@@ -1,7 +1,7 @@
-import Linea from "./Linea";
+import Linea from './Linea'
 
-export default function Listado({ productos, setIdSeleccionado, setProductos }) {
-    return (
+export default function Listado ({ productos, setIdSeleccionado, setProductos }) {
+  return (
         <table className="table table-hovered table-striped table-bordered">
             <thead className="table-dark">
                 <tr>
@@ -13,13 +13,15 @@ export default function Listado({ productos, setIdSeleccionado, setProductos }) 
                 </tr>
             </thead>
             <tbody>
-                {productos.length > 0 ? (
-                    productos.map(producto => <Linea key={producto.id} producto={producto} setIdSeleccionado={setIdSeleccionado} setProductos={setProductos} />)
-                ) : (
+                {productos.length > 0
+                  ? (
+                      productos.map(producto => <Linea key={producto.id} producto={producto} setIdSeleccionado={setIdSeleccionado} setProductos={setProductos} />)
+                    )
+                  : (
                     <tr>
                         <td colSpan="5">No hay productos disponibles.</td>
                     </tr>
-                )}
+                    )}
             </tbody>
             <tfoot className="table-dark">
                 <tr>
@@ -33,5 +35,5 @@ export default function Listado({ productos, setIdSeleccionado, setProductos }) 
                 </tr>
             </tfoot>
         </table>
-    );
+  )
 }

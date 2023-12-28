@@ -1,4 +1,4 @@
-export default function Menu({ menus }) {
+export default function Menu ({ menus }) {
   const renderMenuItems = (menuItems) => {
     return menuItems.map((m) => (
       <li className="nav-item" key={m.url}>
@@ -6,8 +6,8 @@ export default function Menu({ menus }) {
           {m.nombre}
         </a>
       </li>
-    ));
-  };
+    ))
+  }
 
   return (
     <nav className="navbar navbar-expand-sm bg-dark mb-3" data-bs-theme="dark">
@@ -36,5 +36,5 @@ export default function Menu({ menus }) {
         </div>
       </div>
     </nav>
-  );
+  )
 }

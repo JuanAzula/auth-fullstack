@@ -1,23 +1,22 @@
-import {ProductoService, token} from "../../servicios/ProductoService";
-import LabelInput from "./LabelInput";
+import { ProductoService, token } from '../../servicios/ProductoService'
+import LabelInput from './LabelInput'
 
-export default function Formulario({ producto, setIdSeleccionado, setProducto, setProductos }) {
-    console.log('Formulario', producto);
+export default function Formulario ({ producto, setIdSeleccionado, setProducto, setProductos }) {
+  console.log('Formulario', producto)
 
-    async function guardar() {
-        if (producto.id) {
-            await ProductoService.putProducto(producto, {token});
-            setProductos(await ProductoService.getProductos());
-            setIdSeleccionado(null);
-        } else {
-            await ProductoService.postProducto(producto, {token});
-            setProductos(await ProductoService.getProductos())
-            setIdSeleccionado(null);
-        }
-
+  async function guardar () {
+    if (producto.id) {
+      await ProductoService.putProducto(producto, { token })
+      setProductos(await ProductoService.getProductos())
+      setIdSeleccionado(null)
+    } else {
+      await ProductoService.postProducto(producto, { token })
+      setProductos(await ProductoService.getProductos())
+      setIdSeleccionado(null)
     }
+  }
 
-    return (
+  return (
         <>
             {/* <pre>{JSON.stringify(producto)}</pre> */}
             <form noValidate={true}>
@@ -28,5 +27,5 @@ export default function Formulario({ producto, setIdSeleccionado, setProducto, s
                 <LabelInput nombre="Guardar" tipo="button" onEnviar={guardar} />
             </form>
         </>
-    );
+  )
 }
