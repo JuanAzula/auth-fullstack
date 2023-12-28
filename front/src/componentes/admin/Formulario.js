@@ -1,5 +1,6 @@
 import { ProductoService, token } from '../../servicios/ProductoService'
 import LabelInput from './LabelInput'
+import PropTypes from 'prop-types'
 
 export default function Formulario ({ producto, setIdSeleccionado, setProducto, setProductos }) {
   console.log('Formulario', producto)
@@ -28,4 +29,13 @@ export default function Formulario ({ producto, setIdSeleccionado, setProducto, 
             </form>
         </>
   )
+}
+
+Formulario.displayName = 'Formulario'
+
+Formulario.propTypes = {
+  producto: PropTypes.object.isRequired,
+  setIdSeleccionado: PropTypes.func.isRequired,
+  setProducto: PropTypes.func.isRequired,
+  setProductos: PropTypes.func.isRequired
 }

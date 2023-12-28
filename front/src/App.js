@@ -9,7 +9,7 @@ import { useEffect, useState } from 'react'
 import { ProductoService, TokenService } from './servicios/ProductoService'
 import LoginForm from './componentes/LoginForm.js'
 import ProductForm from './componentes/ProductForm.js'
-import Togglable from './componentes/Togglable.js'
+import Togglable from './componentes/reusable/ErrorFormat.js'
 
 export default function App () {
   const [productos, setProductos] = useState([])
